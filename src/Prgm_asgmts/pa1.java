@@ -74,7 +74,7 @@ public class pa1 {
         int q;
         if(p == r) return p;  // Base case: if length of subArray is 1, return that index.
         else{
-            q = (p+r)/2; // Split the subArray in half, find max index of next subArray.
+            q = (p+r)/2; // Split the subArray in half, recursively find max index of next subArray.
             return min(X, minArrayIndex(X, p, q), minArrayIndex(X, q+1, r));
         }
     }
