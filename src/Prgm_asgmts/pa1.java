@@ -70,6 +70,7 @@ public class pa1 {
             return max(X, maxArrayIndex(X, p, q), maxArrayIndex(X, q+1, r));
         }
     }
+
     static int minArrayIndex(int[] X, int p, int r){
         int q;
         if(p == r) return p;  // Base case: if length of subArray is 1, return that index.
