@@ -3,9 +3,9 @@ package Prgm_asgmts;
  * Created by Rick on 4/2/2016.
  */
 
-import java.util.Arrays;
 public class pa1 {
-    public static void main(String[] args) {
+    public static void main(String[] args){
+
         int[] A = {-1, 2, 6, 12, 9, 2, -5, -2, 8, 5, 7};
         int[] B = new int[A.length];
         int[] C = new int[A.length];
@@ -28,7 +28,9 @@ public class pa1 {
         reverseArray3(A, 0, A.length-1);
         for(int x: A) System.out.print(x+" ");
         System.out.println();
+
     }
+
 
     // copy the LEFTMOST n elements in X[] into the RIGHTMOST n positions in Y[] in reverse order.
     static void reverseArray1(int[] X, int n, int[] Y){
@@ -61,37 +63,30 @@ public class pa1 {
     }
 
     static int maxArrayIndex(int[] X, int p, int r){
-        int q = (p + r) / 2;
-
-        if (X.length == 1) {
-            return X.length - 1;
+        int q;
+        if(p == r) return p;
+        else{
+            q = (p+r)/2;
+            return max(X, maxArrayIndex(X, p, q), maxArrayIndex(X, q+1, r));
         }
-        return maxIndex(p, q, X);
-        //max = maxIndex(q + 1, r, X);
     }
     static int minArrayIndex(int[] X, int p, int r){
-        int q = (p + r) / 2;
-
-        if (X.length == 1) {
-            return X.length - 1;
+        int q;
+        if(p == r) return p;  // Base case: if length of subArray is 1, return that index.
+        else{
+            q = (p+r)/2; // Split the subArray in half, find max index of next subArray.
+            return min(X, minArrayIndex(X, p, q), minArrayIndex(X, q+1, r));
         }
-        return minIndex(p, q, X);
-        //max = maxIndex(q + 1, r, X);
     }
 
-    public static int maxIndex(int i, int j, int[] a) {
-        if (i == a.length - 1) return a.length - 1;
-        j = maxIndex(i + 1, j, a);
-        if (a[i] > a[j])
-            return i;
-        return j;
+    // Helper: compares values of elements in array and returns index of larger.
+    static int max(int[] X, int i, int j){
+        if(X[i] >= X[j])return i;
+        else return j;
     }
-
-    public static int minIndex(int i, int j, int[] a) {
-        if (i == a.length - 1) return a.length - 1;
-        j = minIndex(i + 1, j, a);
-        if (a[i] < a[j])
-            return i;
-        return j;
+    // Helper: compares values of elements in array and returns index of smaller.
+    static int min(int[] X, int i, int j){
+        if(X[i] <= X[j]) return i;
+        else return j;
     }
 }
