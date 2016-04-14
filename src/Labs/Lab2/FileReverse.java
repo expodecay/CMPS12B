@@ -60,3 +60,25 @@ public class FileReverse {
         return output;
     }
 }
+/*
+ Text for input file:
+
+       abc defg
+       hi
+       jkl mnop q
+       rstu v
+       wxyz
+*/
+/*
+Resultant output file text:
+
+        cba
+        gfed
+        ih
+        lkj
+        ponm
+        q
+        utsr
+        v
+        zyxw
+*/
