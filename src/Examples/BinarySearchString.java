@@ -23,6 +23,7 @@ public class BinarySearchString{
         }
     }
 
+
     public static void main(String[] args) {
 
         String[] B = {"gas" , "gass" , "pion" , "scatter"};
