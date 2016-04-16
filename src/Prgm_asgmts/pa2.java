@@ -11,14 +11,15 @@ class pa2{
         Scanner input = null;
         String line = null;
         String[] token = null;
-        int i, n, totalLineNumber = 0;
-        int[] lineNumber;
+        int[] lineNumber = null;
+        int i, totalLineNumber = 0;
 
         // check number of command line arguments is at least 2
         if(args.length < 2){
             System.out.println("Usage: Search file target1 [target2 ..]");
             System.exit(1);
         }
+
         // Counts number of lines in input file.
         input = new Scanner(new File(args[0]));
         while( input.hasNextLine() ){
@@ -30,7 +31,7 @@ class pa2{
         token = new String[totalLineNumber];
         lineNumber = new int[totalLineNumber];
 
-        // Read throuth input file again
+        // Read through input file again
         input = new Scanner(new File(args[0]));
 
         // Populate lineNumber[] and token[]
@@ -39,9 +40,9 @@ class pa2{
             token[i] = input.nextLine();
         }
 
-        //puts the string Array in order
+        // Puts the string Array in order
         mergeSort(token, lineNumber, 0, token.length-1);
-        //prints if the target is found and on what line
+        // Print the result of a Binary search for target
         for(int j=1; j<args.length; j++){
             System.out.println( binarySearch(token, lineNumber, 0, token.length-1, args[j]));
         }
@@ -49,10 +50,6 @@ class pa2{
         input.close();
     }
 
-    //mergeSort
-    //Pre: takes two Arrays, along with two integers p and r.
-    //     p and r must be >= 0 && < the length of the Array
-    //Pos: gives the task to merge
     static void mergeSort(String[] word, int[] lineNumber, int p, int r){
         int q;
         if(p<r){
@@ -62,10 +59,7 @@ class pa2{
             merge(word, lineNumber, p, q, r);
         }
     }
-    //merge
-    //Pre: takes two Arrays, along with two integers p and r.
-    //     that are given from mergeSort
-    //Pos: changes the order of the Array putting them in lexical order
+
     static void merge(String[] word, int[] lineNumber, int p, int q, int r){
         int n1 = q-p+1;
         int n2 = r-q;
@@ -112,8 +106,6 @@ class pa2{
             }
         }
     }
-
-
     public static String binarySearch(String[] word, int[] lineNumber, int p, int r, String target) {
         int q;
 
