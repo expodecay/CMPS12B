@@ -1,0 +1,11 @@
+package Examples.LinkedListADT;
+
+//-----------------------------------------------------------------------------
+// ListIndexOutOfBoundsException.java
+//-----------------------------------------------------------------------------
+
+public class ListIndexOutOfBoundsException extends IndexOutOfBoundsException{
+    public ListIndexOutOfBoundsException(String s){
+        super(s);
+    }
+}
